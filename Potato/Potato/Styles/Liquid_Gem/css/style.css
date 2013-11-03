@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 
 
@@ -56,14 +56,14 @@ body{
 
 nav{
 	float:right;
-	width:400px;
+	width:200px;
 	display:block;
 	height:40px;
 }
 
 nav ul li{
 	display:block;
-	width:25%;
+	width:50%;
 	float:left;
 	text-align:center;	
 }
@@ -110,6 +110,15 @@ header h1{
 	font-family: Lato, Arial, Helvetica, sans-serif;
 	text-align:center;
 	font-size:140%;
+	font-weight:normal;
+	letter-spacing:1px;
+	margin-bottom:1%;
+}
+
+h2{
+	font-family: Lato, Arial, Helvetica, sans-serif !important;
+	text-align:left;
+	font-size:14pt !important;
 	font-weight:normal;
 	letter-spacing:1px;
 	margin-bottom:1%;
@@ -215,7 +224,7 @@ header h2{
 
 /* ----------------------- WORK LINKS START ------------------------- */
 #work{
-	width:1000px;
+	width:100%;
 	margin:3% auto 3% auto;
 }
 
@@ -429,7 +438,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 @media only screen and (max-width: 1105px) {
 	
 	#work{
-		width:900px;
+		width:100%;
 }
 
 	.item{
@@ -442,7 +451,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 @media only screen and (max-width: 999px) {
 	
 	#work{
-		width:750px;	
+		width:100%;	
 }
 
 	.item{
@@ -463,7 +472,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 @media only screen and (max-width: 835px) {
 	
 	#work{
-		width:650px;	
+		width:100%;	
 }
 
 	.item{
@@ -494,7 +503,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 @media only screen and (max-width: 720px) {
 	
 	#logo{
-		width:150px;
+		width:250px;
 		display:block;
 		margin:auto;
 		margin-bottom:5%;
@@ -523,7 +532,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	}
 	
 	#work{
-		width:460px;	
+		width:100%;	
 }
 
 	.item{
@@ -544,7 +553,7 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 @media only screen and (max-width: 510px) {
 	
 	#work{
-		width:300px;	
+		width:100%;	
 	}
 
 	.item{
@@ -558,7 +567,8 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	}
 	
 	.item p{
-		font-size:40%;
+		font-size:60%;
+        margin-top: -10px;
 	}
 }
 

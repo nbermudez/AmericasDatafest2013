@@ -17,13 +17,20 @@ namespace Potato.Controllers
             return View();
         }
 
-        public ActionResult Find(String location) {
-            Dictionary<String, String> searchOptions = new Dictionary<string, string>();
+        public ActionResult Find(string location, string keywords, int pageNumber = 0) {
+            Dictionary<string, string> searchOptions = new Dictionary<string, string>();
+            
             searchOptions["location"] = location;
+            searchOptions["pageNumber"] = pageNumber.ToString();
+            searchOptions["keywords"] = keywords;
 
             List<JobOpportunity> jobOpportunities = JobSearchEngineFarm.GetJobOpportunities(searchOptions);
 
-            ViewBag.jobOpportunities = jobOpportunities;
+            ViewBag.Location = location;
+            ViewBag.JobOpportunities = jobOpportunities;
+            if (pageNumber > 0)
+                ViewBag.PreviousUrl = "/JobFinding/Find?location=" + location + "&keywords=" + keywords + "&pageNumber=" + (pageNumber - 1);
+            ViewBag.NextUrl = "/JobFinding/Find?location=" + location + "&keywords=" + keywords + "&pageNumber=" + (pageNumber + 1);
 
             return View();
         }

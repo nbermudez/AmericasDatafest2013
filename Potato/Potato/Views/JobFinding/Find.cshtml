@@ -2,4 +2,33 @@
     ViewBag.Title = "Find";
 }
 
-<h2>Find potato @ViewBag.Message</h2>
+<h2>Job Search near/in @ViewBag.Location</h2>
+
+<table class="table table-hover table-bordered table-striped table-condensed cf">
+    <thead class="cf">
+        <tr>
+            <td>Job Title</td>
+            <td>Description</td>
+            <td>Company</td>
+            <td>Location</td>
+            <td>Similar job opportunities</td>
+        </tr>
+    </thead>
+    <tbody>
+    @for (var i = 0; i < ViewBag.JobOpportunities.Count; i++) { 
+        <tr>
+            <td>@ViewBag.JobOpportunities[i].JobTitle;</td>
+            <td>@ViewBag.JobOpportunities[i].Description</td>
+            <td>@ViewBag.JobOpportunities[i].Company</td>
+            <td>@ViewBag.JobOpportunities[i].Location</td>
+            <td>@ViewBag.JobOpportunities[i].SimilarOpportunitiesUrl</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<div>
+    @if (@ViewBag.PreviousUrl != null) {
+        <a href="@ViewBag.PreviousUrl" >Previous</a>
+    }
+    <a href="@ViewBag.NextUrl" >Next</a>
+</div>

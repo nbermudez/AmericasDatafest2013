@@ -9,6 +9,10 @@ namespace Potato.Classes
 {
     public class DebugUtils
     {
+        public static void PrintInConsole(String text) {
+            System.Diagnostics.Debug.WriteLine(text);
+        }
+
         public static void PrintXmlToConsole(XmlDocument xmlDoc) {
             using (var stringWriter = new StringWriter())
             using (var xmlTextWriter = XmlWriter.Create(stringWriter))

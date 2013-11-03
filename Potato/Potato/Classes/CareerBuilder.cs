@@ -23,6 +23,8 @@ namespace Potato.Classes
         }
 
         private XmlDocument MakeRequest(string requestUrl) {
+            DebugUtils.PrintInConsole("RequestURL: " + requestUrl);
+
             HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
@@ -33,9 +35,18 @@ namespace Potato.Classes
             return xmlDoc;
         }
 
-        private string DictionaryToRequestParamsString(Dictionary<string, string> dictionary) {
+        public static string DictionaryToRequestParamsString(Dictionary<string, string> dictionary) {
             string result = "";
             result = "Location=" + dictionary["location"];
+
+            if (dictionary.ContainsKey("keywords") && !dictionary["keywords"].Equals(""))
+            {
+                result += "&Keywords=" + dictionary["keywords"];
+            }
+
+            if (dictionary.ContainsKey("pageNumber")) {
+                result += "&PageNumber=" + dictionary["pageNumber"];
+            }            
 
             return result;
         }
@@ -47,13 +58,20 @@ namespace Potato.Classes
             XmlNodeList jobSearchResults = results.SelectNodes("JobSearchResult");
 
             foreach (XmlNode jobSearchResult in jobSearchResults) {
-                string jobTitle = "";
-                string company = "";
-                string location = "";
-                DateTime date = DateTime.Now;
-                string similarJobOpportunities = "";
+                XmlNode jobTitleNode = jobSearchResult.SelectSingleNode("ONetFriendlyTitle");
+                XmlNode companyNode = jobSearchResult.SelectSingleNode("Company");
+                XmlNode descriptionNode = jobSearchResult.SelectSingleNode("DescriptionTeaser");
+                XmlNode locationNode = jobSearchResult.SelectSingleNode("Location");
+                XmlNode postedDateNode = jobSearchResult.SelectSingleNode("PostedDate");
+                XmlNode similarJobsNode = jobSearchResult.SelectSingleNode("SimilarJobsURL");
 
-                JobOpportunity jobOpportunity = new JobOpportunity(jobTitle, company, location, date, similarJobOpportunities);
+                string jobTitle = jobTitleNode.InnerText;
+                string description = descriptionNode.InnerText;
+                string company = companyNode.InnerText;
+                string location = locationNode.InnerText;
+                string similarJobOpportunities = similarJobsNode.InnerText;
+
+                JobOpportunity jobOpportunity = new JobOpportunity(jobTitle, description, company, location, similarJobOpportunities);
 
                 jobOpportunities.Add(jobOpportunity);
             }

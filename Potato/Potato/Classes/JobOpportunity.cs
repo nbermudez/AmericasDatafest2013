@@ -15,6 +15,16 @@ namespace Potato.Classes
             get { return jobTitle; }
             set { jobTitle = value; }
         }
+
+        string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+
         string company;
 
         public string Company
@@ -29,13 +39,7 @@ namespace Potato.Classes
             get { return location; }
             set { location = value; }
         }
-        DateTime date;
 
-        public DateTime Date
-        {
-            get { return date; }
-            set { date = value; }
-        }
         string similarOpportunitiesUrl;
 
         public string SimilarOpportunitiesUrl
@@ -45,12 +49,12 @@ namespace Potato.Classes
         }
         #endregion
 
-        public JobOpportunity(string jobTitle, string company, string location, DateTime date, string similarOpportunitiesUrl)
+        public JobOpportunity(string jobTitle, string description, string company, string location, string similarOpportunitiesUrl)
         {
             this.jobTitle = jobTitle;
+            this.description = description;
             this.company = company;
             this.location = location;
-            this.date = date;
             this.similarOpportunitiesUrl = similarOpportunitiesUrl;
         }
     }

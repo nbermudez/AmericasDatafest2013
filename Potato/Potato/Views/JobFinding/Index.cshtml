@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<aside class="left">
+    <h3>Job Finding.</h3>
+    <p>We are trying to make this easy for you. </p>
+    <p>You just need to specify the place in which you want to look for a job.</p>
+    <p>It can be a zip code, a city name or a state name.</p>
+    <p>You can also give some keywords to refine the results.</p>
+</aside>
+<aside class="right" style="text-align: right">
+    <h3>Encontrando Empleo.</h3>
+    <p>Estamos tratando que esto se te haga fácil. </p>
+    <p>Solo dinos el lugar en el cual quisieras buscar un empleo.</p>
+    <p>Puedes escribir un zip code, el nombre de un estado o de una ciudad.</p>
+    <p>Además puedes escribir algunas palabras clave para refinar la búsqueda.</p>
+</aside>
+<div class="clearfix"></div>
+<form method="get" action="/JobFinding/Find" >
+    <label for="location" >Location (Lugar)</label>
+    <input id="location" type="text" placeholder="Write a location like Miami" name="location" />
+    <label for="keywords" >Keywords (Palabras clave)</label>
+    <textarea name="keywords" id="keywords" placeholder="Write some keywords like 'Doctor' or 'Laws' separated by comma." ></textarea>
+    <button >Search (Buscar)</button>
+</form>

@@ -3,45 +3,61 @@
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - Mi aplicación ASP.NET MVC</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
+        <title>@ViewBag.Title - Migrant's Daily Living</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../assets/css/potato.css" rel="stylesheet" />
+	    <link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="../Styles/Liquid_Gem/css/style.css" rel="stylesheet" />
+	    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700|Cookie" rel="stylesheet" type="text/css">
+
+	    <!--[if IE 7]>
+	        <link rel="stylesheet" href="../assets/css/font-awesome-ie7.min.css" />
+	    <![endif]-->
+
+	    <!--page specific plugin styles-->
+
+	    <!--fonts-->
+
+	    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+	    <!--ace styles-->
+
+	    <link rel="stylesheet" href="../assets/css/ace.min.css" />
+	    <link rel="stylesheet" href="../assets/css/ace-responsive.min.css" />
+	    <link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+        
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("su logotipo aquí", "Index", "Home")</p>
+        <div class="wrapper">
+            <div id="top">
+                <div id="logo">
+                    <h1 id="logotitle">Migrant's Daily Living</h1>                    
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
+                <nav>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About us", "About", "Home")</li>
+                    </ul>
+                </nav>
+            </div>   
+            <hr />
+            <header>
+                <h1>Find usefull information about transportation, health, jobs and finances.</h1>
+            </header>
             @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
+            <section class="content-wrapper main-content clear-fix flip-scroll" id="work">
                 @RenderBody()
             </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET MVC</p>
-                </div>
-            </div>
-        </footer>
+            <section id="bottom">
+                <h3>We hope we helped you. Esperamos haberles sido útil.</h3>
+            </section>
+        </div>        
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
