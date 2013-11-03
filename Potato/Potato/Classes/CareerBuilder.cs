@@ -46,7 +46,9 @@ namespace Potato.Classes
 
             if (dictionary.ContainsKey("pageNumber")) {
                 result += "&PageNumber=" + dictionary["pageNumber"];
-            }            
+            }
+
+            result += "&PerPage=10";
 
             return result;
         }

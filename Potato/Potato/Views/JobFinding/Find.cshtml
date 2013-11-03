@@ -3,32 +3,51 @@
 }
 
 <h2>Job Search near/in @ViewBag.Location</h2>
-
-<table class="table table-hover table-bordered table-striped table-condensed cf">
-    <thead class="cf">
-        <tr>
-            <td>Job Title</td>
-            <td>Description</td>
-            <td>Company</td>
-            <td>Location</td>
-            <td>Similar job opportunities</td>
-        </tr>
-    </thead>
-    <tbody>
-    @for (var i = 0; i < ViewBag.JobOpportunities.Count; i++) { 
-        <tr>
-            <td>@ViewBag.JobOpportunities[i].JobTitle;</td>
-            <td>@ViewBag.JobOpportunities[i].Description</td>
-            <td>@ViewBag.JobOpportunities[i].Company</td>
-            <td>@ViewBag.JobOpportunities[i].Location</td>
-            <td>@ViewBag.JobOpportunities[i].SimilarOpportunitiesUrl</td>
-        </tr>
-    }
-    </tbody>
-</table>
-<div>
-    @if (@ViewBag.PreviousUrl != null) {
-        <a href="@ViewBag.PreviousUrl" >Previous</a>
-    }
-    <a href="@ViewBag.NextUrl" >Next</a>
+<div class="dataTables_wrapper">
+    <table class="table table-hover table-bordered table-striped table-condensed cf">
+        <thead class="cf">
+            <tr>
+                <td>Job Title</td>
+                <td>Description</td>
+                <td>Company</td>
+                <td>Location</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < ViewBag.JobOpportunities.Count; i++) { 
+            <tr>
+                <td>@ViewBag.JobOpportunities[i].JobTitle;</td>
+                <td>@ViewBag.JobOpportunities[i].Description</td>
+                <td>@ViewBag.JobOpportunities[i].Company</td>
+                <td>@ViewBag.JobOpportunities[i].Location</td>
+                <td><a href="@ViewBag.JobOpportunities[i].SimilarOpportunitiesUrl" target="_blank" >Similars.</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="row-fluid">
+        <div class="span6"></div>
+        <div class="span6">
+            <div class="dataTables_paginate paging_bootstrap pagination">
+                <ul>
+                    @if (@ViewBag.PreviousUrl != null) {
+                        <li>
+                            <a href="@ViewBag.PreviousUrl" ><i class="icon-double-angle-left"></i></a>
+                        </li>
+                    } else {
+                        <li class="prev disabled">
+                            <a href="#">
+                                <i class="icon-double-angle-left"></i>
+                            </a>
+                        </li>
+                    } 
+                    <li class="next">
+                        <a href="@ViewBag.NextUrl" ><i class="icon-double-angle-right"></i></a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
 </div>

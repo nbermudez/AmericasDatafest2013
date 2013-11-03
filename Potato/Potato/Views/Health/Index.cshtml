@@ -2,4 +2,200 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation</title>
+    <style>
+        #map-canvas {
+            height: 300px;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <!--
+    Include the maps javascript with sensor=true because this code is using a
+    sensor (a GPS locator) to determine the user's location.
+    See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places,visualization"></script>
+
+    <script>
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see a blank space instead of the map, this
+        // is probably because you have denied permission for location sharing.
+
+        var infowindow;
+        var service;
+        var pos;
+        var map;
+        var filters = new Array();
+        var markers = [];
+        var name = "";
+
+        function push(checkbox) {
+            if (filters.lastIndexOf(checkbox.value) >= 0) {
+                filters.splice(filters.lastIndexOf(checkbox.value), 1);
+            } else {
+                filters.push(checkbox.value);
+            }
+            cleanUpMarkers();
+            performSearch();
+        }
+
+        function cleanUpMarkers() {
+            for (var i = 0; i < markers.length ; i++) {
+                markers[i].setMap(null);
+            }
+            markers.length = 0;
+            name = "sdflcv asldfna dkfs";
+        }
+
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('map-canvas'), {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 15
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    pos = new google.maps.LatLng(position.coords.latitude,
+                                                     position.coords.longitude);
+                    map.setCenter(pos);
+                }, function () {
+                    handleNoGeolocation(true);
+                });
+
+                infowindow = new google.maps.InfoWindow();
+                service = new google.maps.places.PlacesService(map);
+                google.maps.event.addListener(map, 'bounds_changed', performSearch);
+            } else {
+                handleNoGeolocation(false);
+            }
+
+
+        }
+
+        function performSearch() {
+            var request = {
+                location: map.getCenter(),
+                bounds: map.getBounds(),
+                keyword: 'health',
+                types: filters
+            };
+            service.radarSearch(request, callback);
+        }
+
+        function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                service.getDetails(place, function (result, status) {
+                    if (status != google.maps.places.PlacesServiceStatus.OK) {
+                        alert(status);
+                        return;
+                    }
+                    infowindow.setContent(result.name);
+                    infowindow.open(map, marker);
+                });
+            });
+            markers.push(marker);
+        }
+        
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag) {
+                var content = 'Error: The Geolocation service failed.';
+            } else {
+                var content = 'Error: Your browser doesn\'t support geolocation.';
+            }
+
+            var options = {
+                map: map,
+                position: new google.maps.LatLng(60, 105),
+                content: content
+            };
+
+            var infowindow = new google.maps.InfoWindow(options);
+            map.setCenter(options.position);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</head>
+<body>
+    <aside class="left">
+        <h3>Health Information</h3>
+        <p>To be able to decide about your health you must have information first. 
+            Here you can find some links contains recent health news and practical ways for keeping you and your 
+            family healthy.
+        </p>
+        <ul>
+            <li>
+                <p><a href="http://www.healthfinder.gov/Default.aspx">healthfinder.gov</a> is a health information center
+                    that counts with a large amount of resources about health education and habits.
+                </p>
+            </li>
+            <li>
+                <p><a href="http://medlineplus.gov/">MedlinePlus.gov</a> is a great website to find dosage and indications
+                    for a lot of medicines. You can also find some good videos and tutorials to treat common diseases.
+                </p>
+            </li>
+        </ul>
+    </aside>
+    <aside class="right" >
+        <h3>Información de Salud.</h3>
+        <p>Para que puedas decidir qué cuidados de salud puedes tomar necesitas tener la información adecuada.
+            Aquí encontrarás algunos enlaces de interés que contienen maneras para mantener saludable a ti y tu familia.
+        </p>
+        <ul>
+            <li>
+                <p><a href="http://www.healthfinder.gov/espanol/">healthfinder.gov</a> es un sitio que cuenta con una
+                    gran cantidad de material sobre el cuidado y educación en aspectos de salud.
+                </p>
+            </li>
+            <li>
+                <p><a href="http://medlineplus.gov/spanish/">MedlinePlus.gov</a> es un excelente sitio para encontrar indicaciones y
+                    usos para muchos medicamentos así como videos y tutoriales para tratar algunas enfermedades.
+                </p>
+            </li>
+        </ul>
+    </aside>
+    <div class="clearfix"></div>
+    <hr />
+    <aside class="left">
+        <h3>Find pharmacies, hospitals and doctors near you.</h3>
+        <p>Just select which ones you want to look for.</p>
+    </aside>
+    <aside class="right">
+        <h3>Encuentra farmacias, hospitales y doctores cerca de ti.</h3>
+        <p>Simplemente selecciona cuales quieres buscar.</p>
+    </aside>
+    <div class="clearfix"></div>
+    <div class="control-group">
+        <div class="controls">
+            <input id="id-disabled-check" type="checkbox" value="hospital" onchange="push(this);">
+            <label class="lbl" for="id-disable-check"> Hospitals</label>
+            <input id="id-disabled-check2" name="pharmacy" type="checkbox" value="pharmacy" onchange="push(this);" />
+            <label class="lbl" for="id-disable-check2"> Pharmacies</label>
+            <input id="id-disabled-check3" name="doctor" type="checkbox" value="doctor" onchange="push(this);" />
+            <label class="lbl" for="id-disable-check3"> Doctors</label>
+            <input id="id-disabled-check4" name="gym" type="checkbox" value="gym" onchange="push(this);" />
+            <label class="lbl" for="id-disable-check4"> Gyms</label>
+            <input id="id-disabled-check5" name="health" type="checkbox" value="health" onchange="push(this);" />
+            <label class="lbl" for="id-disable-check5"> Health related</label>
+        </div>
+    </div>
+    <div id="map-canvas"></div>
+</body>
+</html>
