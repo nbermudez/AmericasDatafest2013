@@ -1,1 +1,198 @@
-﻿
+﻿@{
+    ViewBag.Title = "Laws";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Gallery - Ace Admin</title>
+
+		<meta name="description" content="responsive photo gallery using colorbox" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--basic styles-->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!--page specific plugin styles-->
+
+		<link rel="stylesheet" href="assets/css/colorbox.css" />
+
+		<!--fonts-->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!--ace styles-->
+
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-responsive.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!--inline styles related to this page-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+	<body>
+
+					
+
+				<div class="page-content">
+					<div class="page-header position-relative">
+						<h1>
+							Law
+							<small>
+								<i class="icon-double-angle-right"></i>
+								Comics
+							</small>
+						</h1>
+					</div><!--/.page-header-->
+
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+
+							<div class="row-fluid">
+								<ul class="ace-thumbnails">
+									
+								    <li>
+										<a href="assets/images/gallery/caricatura1.png" data-rel="colorbox" >
+											<img alt="150x150" src="assets/images/gallery/caricatura1.png" style="max-width:500px; max-height:500px;" />
+											<div class="text">
+												<div class="inner">Caricatura de Leyes</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="assets/images/gallery/caricatura2.png" data-rel="colorbox">
+											<img alt="150x150" src="assets/images/gallery/caricatura2.png" style="max-width:500px; max-height:500px;"/>
+											<div class="text">
+												<div class="inner">Caricatura de Leyes</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="assets/images/gallery/caricatura3.png" data-rel="colorbox">
+											<img alt="150x150" src="assets/images/gallery/caricatura3.png" style="max-width:500px; max-height:500px;"/>
+											<div class="text">
+												<div class="inner">Caricatura de Leyes</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="assets/images/gallery/caricatura4.png" data-rel="colorbox">
+											<img alt="150x150" src="assets/images/gallery/caricatura4.png" style="max-width:500px; max-height:500px;"/>
+											<div class="text">
+												<div class="inner">Caricatura de Leyes</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="assets/images/gallery/caricatura5.png" data-rel="colorbox">
+											<img alt="150x150" src="assets/images/gallery/caricatura5.png" style="max-width:500px; max-height:500px;"/>
+											<div class="text">
+												<div class="inner">Caricatura de Leyes</div>
+											</div>
+										</a>
+									</li>
+
+								</ul>
+							</div><!--PAGE CONTENT ENDS-->
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+
+		<!--basic scripts-->
+
+		<!--[if !IE]>-->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+		<!--<![endif]-->
+
+		<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+		<!--[if !IE]>-->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!--<![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!--page specific plugin scripts-->
+
+		<script src="assets/js/jquery.colorbox-min.js"></script>
+
+		<!--ace scripts-->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!--inline scripts related to this page-->
+
+		<script type="text/javascript">
+			$(function() {
+	var colorbox_params = {
+		reposition:true,
+		scalePhotos:true,
+		scrolling:false,
+		previous:'<i class="icon-arrow-left"></i>',
+		next:'<i class="icon-arrow-right"></i>',
+		close:'&times;',
+		current:'{current} of {total}',
+		maxWidth:'100%',
+		maxHeight:'100%',
+		onOpen:function(){
+			document.body.style.overflow = 'hidden';
+		},
+		onClosed:function(){
+			document.body.style.overflow = 'auto';
+		},
+		onComplete:function(){
+			$.colorbox.resize();
+		}
+	};
+
+	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+	$("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
+
+	/**$(window).on('resize.colorbox', function() {
+		try {
+			//this function has been changed in recent versions of colorbox, so it won't work
+			$.fn.colorbox.load();//to redraw the current frame
+		} catch(e){}
+	});*/
+})
+		</script>
+	</body>
+</html>
