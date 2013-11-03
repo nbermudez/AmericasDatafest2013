@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Potato.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,5 +17,14 @@ namespace Potato.Controllers
             return View();
         }
 
+        public ActionResult Path_Finder() {
+            
+            return View();
+        }
+
+        public ActionResult Transportation_Location() {
+            
+            return View();
+        }
     }
 }

@@ -599,6 +599,8 @@
     <Content Include="Views\Health\Index.cshtml" />
     <Content Include="Views\Laws\Index.cshtml" />
     <Content Include="Views\Transportation\Index.cshtml" />
+    <Content Include="Views\Transportation\Path_Finder.cshtml" />
+    <Content Include="Views\Transportation\Transportation_Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
